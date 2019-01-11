@@ -38,7 +38,14 @@ import java.util.concurrent.Executors;
 public class MainActivity extends AppCompatActivity implements ProgressCallback {
 
   private ICity cityCallback = city -> {
-
+    String mapLocation = "geo:" + city.getCoord().getLatitude() + "," + city.getCoord().getLongitude();
+    Log.d(MainActivity.class.getSimpleName(), "Map Location: " + mapLocation);
+    Uri gmmIntentUri = Uri.parse(mapLocation);
+    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+    mapIntent.setPackage("com.google.android.apps.maps");
+    if (mapIntent.resolveActivity(getPackageManager()) != null) {
+      startActivity(mapIntent);
+    }
   };
 
   private MultiTypeDataBoundAdapter adapter = new MultiTypeDataBoundAdapter(cityCallback);
