@@ -66,8 +66,7 @@ public class MainActivity extends AppCompatActivity implements ProgressCallback 
     executor.execute(() -> {
       try {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Type listType = new TypeToken<List<City>>() {
-        }.getType();
+        Type listType = new TypeToken<List<City>>() {}.getType();
         String json = getJson();
         Log.d(MainActivity.class.getSimpleName(), "JSON: " + json);
         cities = gson.fromJson(getJson(), listType);
