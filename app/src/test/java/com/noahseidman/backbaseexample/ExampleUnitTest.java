@@ -1,6 +1,8 @@
 package com.noahseidman.backbaseexample;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import org.junit.Test;
@@ -20,5 +22,11 @@ public class ExampleUnitTest {
     public void abortableSearchTest() {
         AbortableSearch abortableSearch = new AbortableSearch(new ArrayList<>(), "");
         abortableSearch.startsWith(null, null);
+
+        assertTrue(abortableSearch.startsWith("test", "te"));
+        assertTrue(abortableSearch.startsWith("test", "tes"));
+        assertTrue(abortableSearch.startsWith("test", "test"));
+
+        assertFalse(abortableSearch.startsWith("cheese", "please"));
     }
 }

@@ -1,7 +1,6 @@
 package com.noahseidman.backbaseexample;
 
 import android.os.Handler;
-import android.os.Looper;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import com.noahseidman.backbaseexample.adapter.MultiTypeDataBoundAdapter;
@@ -17,7 +16,7 @@ public class AbortableSearch implements Runnable {
   private boolean aborted = false;
   private int cityIndex;
   private boolean cityEquivalence;
-  private Handler handler = new Handler(Looper.getMainLooper());
+  private Handler handler;
   private MultiTypeDataBoundAdapter adapter;
   private LinearLayoutManager manager;
   private ProgressCallback progressCallback;
@@ -37,6 +36,10 @@ public class AbortableSearch implements Runnable {
 
   public void setProgressCallback(ProgressCallback progressCallback) {
     this.progressCallback = progressCallback;
+  }
+
+  public void setHandler(Handler handler) {
+    this.handler = handler;
   }
 
   public void abort() {

@@ -131,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements ProgressCallback 
         currentSearch.setAdapter(adapter);
         currentSearch.setLayoutManager(binding.getLayout());
         currentSearch.setProgressCallback(MainActivity.this::showProgress);
+        currentSearch.setHandler(handler);
         executor.execute(currentSearch);
         return false;
       }
