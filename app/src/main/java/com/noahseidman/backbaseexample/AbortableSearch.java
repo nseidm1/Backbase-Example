@@ -66,6 +66,14 @@ public class AbortableSearch implements Runnable {
     handler.post(() -> progressCallback.showProgress(false));
   }
 
+  /**
+   *
+   * Fast prefix search. No strings are created, only character comparison
+   *
+   * @param value
+   * @param prefix
+   * @return if there's a prefix match
+   */
   public boolean startsWith(String value, String prefix) {
     if (TextUtils.isEmpty(value) || TextUtils.isEmpty(prefix)) {
       return false;
