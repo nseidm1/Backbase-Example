@@ -28,5 +28,8 @@ public class ExampleUnitTest {
         assertTrue(abortableSearch.startsWith("test", "test"));
 
         assertFalse(abortableSearch.startsWith("cheese", "please"));
+
+        assertFalse(abortableSearch.startsWith("cheese", null));
+        assertFalse(abortableSearch.startsWith(null, "test"));
     }
 }
