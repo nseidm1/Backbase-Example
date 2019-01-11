@@ -3,6 +3,7 @@ package com.noahseidman.backbaseexample;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import com.noahseidman.backbaseexample.adapter.MultiTypeDataBoundAdapter;
 import com.noahseidman.backbaseexample.interfaces.ProgressCallback;
 import com.noahseidman.backbaseexample.models.City;
@@ -63,6 +64,9 @@ public class AbortableSearch implements Runnable {
   }
 
   public boolean startsWith(String value, String prefix) {
+    if (TextUtils.isEmpty(value) || TextUtils.isEmpty(prefix)) {
+      return false;
+    }
     int length = prefix.length();
     if (length > value.length()) {
       return false;
