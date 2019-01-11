@@ -30,7 +30,6 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -72,15 +71,12 @@ public class MainActivity extends AppCompatActivity implements ProgressCallback 
         String json = getJson();
         Log.d(MainActivity.class.getSimpleName(), "JSON: " + json);
         cities = gson.fromJson(getJson(), listType);
-        Collections.sort(cities, new Comparator<City>() {
-          @Override
-          public int compare(City o1, City o2) {
-            int nameCompare = o1.getName().compareToIgnoreCase(o2.getName());
-            if (nameCompare != 0) {
-              return nameCompare;
-            } else {
-              return o1.getCountry().compareToIgnoreCase(o2.getCountry());
-            }
+        Collections.sort(cities, (o1, o2) -> {
+          int nameCompare = o1.getName().compareToIgnoreCase(o2.getName());
+          if (nameCompare != 0) {
+            return nameCompare;
+          } else {
+            return o1.getCountry().compareToIgnoreCase(o2.getCountry());
           }
         });
         Log.d(MainActivity.class.getSimpleName(), "Size: " + cities.toString());
