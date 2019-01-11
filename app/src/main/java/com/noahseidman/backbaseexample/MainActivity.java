@@ -37,7 +37,8 @@ import java.util.concurrent.Executors;
 public class MainActivity extends AppCompatActivity implements ProgressCallback {
 
   private ICity cityCallback = city -> {
-    String mapLocation = "geo:" + city.getCoord().getLatitude() + "," + city.getCoord().getLongitude();
+    String mapLocation =
+        "geo:" + city.getCoord().getLatitude() + "," + city.getCoord().getLongitude();
     Log.d(MainActivity.class.getSimpleName(), "Map Location: " + mapLocation);
     Uri gmmIntentUri = Uri.parse(mapLocation);
     Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
@@ -66,7 +67,8 @@ public class MainActivity extends AppCompatActivity implements ProgressCallback 
     executor.execute(() -> {
       try {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Type listType = new TypeToken<List<City>>() {}.getType();
+        Type listType = new TypeToken<List<City>>() {
+        }.getType();
         String json = getJson();
         Log.d(MainActivity.class.getSimpleName(), "JSON: " + json);
         cities = gson.fromJson(getJson(), listType);

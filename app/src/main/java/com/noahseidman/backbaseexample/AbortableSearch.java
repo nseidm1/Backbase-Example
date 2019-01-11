@@ -11,8 +11,8 @@ import java.util.List;
 
 public class AbortableSearch implements Runnable {
 
-  private ArrayList<City> cities;
   public String search;
+  private ArrayList<City> cities;
   private boolean aborted = false;
   private int cityIndex;
   private boolean cityEquivalence;
